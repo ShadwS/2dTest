@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public PlayerMovement Movement;
-    public PlayerRotation Rotation;
-    public PlayerHealth Health;
+    public PlayerHealth Health => _health;
+
+    [SerializeField] private PlayerHealth _health;
 }
