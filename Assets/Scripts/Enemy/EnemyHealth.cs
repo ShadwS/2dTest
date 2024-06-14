@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    [SerializeField] private Animator _animator;
     [SerializeField] private int _health;
     private SpawnEnemy _spawner;
 
@@ -9,6 +10,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        _animator.SetTrigger("Take damage");
         _health -= damage;
         if (_health <= 0)
         {

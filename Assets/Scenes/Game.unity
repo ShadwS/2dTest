@@ -488,6 +488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reloadImage: {fileID: 940946983}
+  _textAmmo: {fileID: 619206141}
   _bullet: {fileID: 6017939036270835211, guid: 7c7fb94ab81fef44095193a3ffc3edc2, type: 3}
   _maxAmmoMagazine: 25
   _delayShoot: 0.1
@@ -781,6 +782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reloadImage: {fileID: 940946983}
+  _textAmmo: {fileID: 619206141}
   _bullet: {fileID: 6017939036270835211, guid: 7c7fb94ab81fef44095193a3ffc3edc2, type: 3}
   _maxAmmoMagazine: 5
   _delayShoot: 0.25
@@ -825,8 +827,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -3.3573914, y: 0}
-  m_SizeDelta: {x: 1.0475, y: 0}
+  m_AnchoredPosition: {x: -4.399994, y: 0}
+  m_SizeDelta: {x: -0.0115, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &291813199
 MonoBehaviour:
@@ -1237,6 +1239,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 727010179}
+  - {fileID: 619206140}
   m_Father: {fileID: 279613563}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1414,6 +1417,86 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &619206139
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 619206140}
+  - component: {fileID: 619206142}
+  - component: {fileID: 619206141}
+  m_Layer: 5
+  m_Name: Text ammo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &619206140
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619206139}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 532635515}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 37}
+  m_SizeDelta: {x: 160, y: 74}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &619206141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619206139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 30
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 15 / 20
+--- !u!222 &619206142
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619206139}
+  m_CullTransparentMesh: 1
 --- !u!1 &636627944
 GameObject:
   m_ObjectHideFlags: 0
@@ -1569,7 +1652,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.461
+  m_Value: 0.469
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1892,8 +1975,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -8.6658, y: 0}
-  m_SizeDelta: {x: -17.3315, y: 0}
+  m_AnchoredPosition: {x: -9.6266, y: 0}
+  m_SizeDelta: {x: -19.2533, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1209615825
 MonoBehaviour:
@@ -2502,6 +2585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reloadImage: {fileID: 940946983}
+  _textAmmo: {fileID: 619206141}
   _bullet: {fileID: 6017939036270835211, guid: 7c7fb94ab81fef44095193a3ffc3edc2, type: 3}
   _maxAmmoMagazine: 10
   _delayShoot: 0.15

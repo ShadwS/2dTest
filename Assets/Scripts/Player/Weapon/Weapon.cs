@@ -4,7 +4,12 @@ using System.Collections;
 
 public class Weapon : MonoBehaviour
 {
+    [Header("UI")]
     [SerializeField] private Image _reloadImage;
+    [SerializeField] private Text _textAmmo;
+
+    [Space]
+    [Header("Seapon settings")]
     [SerializeField] protected GameObject _bullet;
     [SerializeField] protected int _maxAmmoMagazine;
     [SerializeField] protected float _delayShoot;
@@ -24,6 +29,7 @@ public class Weapon : MonoBehaviour
 
     private void OnEnable()
     {
+        _textAmmo.text = $"{_currentAmmoMagazine} / {_maxAmmoMagazine}";
         if (_time <= 0)
         {
             _canFire = true;
@@ -54,6 +60,7 @@ public class Weapon : MonoBehaviour
     private void DeegreaseBullet()
     {
         _currentAmmoMagazine--;
+        _textAmmo.text = $"{_currentAmmoMagazine} / {_maxAmmoMagazine}";
         if (_currentAmmoMagazine <= 0)
         {
             StartCoroutine(Reload());
@@ -79,8 +86,9 @@ public class Weapon : MonoBehaviour
         _reloadImage.fillAmount = 1;
         _currentAmmoMagazine = _maxAmmoMagazine;
         _canFire = true;
+        _textAmmo.text = $"{_currentAmmoMagazine} / {_maxAmmoMagazine}";
 
-        while(_reloadImage.color.a > 0)
+        while (_reloadImage.color.a > 0)
         {
             yield return new WaitForSeconds(Time.deltaTime);
             _reloadImage.color -= new Color(0, 0, 0, Time.deltaTime * 10);
