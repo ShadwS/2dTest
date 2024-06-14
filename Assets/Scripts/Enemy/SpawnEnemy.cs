@@ -3,15 +3,13 @@ using System.Collections;
 
 public class SpawnEnemy : MonoBehaviour
 {
-    public Transform Player => _player;
-
-    [SerializeField] private Transform _player;
+    [SerializeField] private Player _player;
     [SerializeField] private GameObject[] _enemies;
     [Space]
     [Header("Spawn Settings")]
     [SerializeField] private Transform[] _spawnPoints;//0-left, 1-right, 2-up, 3-bottom
     [SerializeField] private int _enemySpawnCount;
-    [SerializeField] private int _enemySpawnDelay;
+    [SerializeField] private float _enemySpawnDelay;
     [SerializeField] private int _enemySpawnIncrease;
     private int _maxEnemySpawnCount = 0;
 
@@ -20,8 +18,17 @@ public class SpawnEnemy : MonoBehaviour
         StartCoroutine(Spawner());
     }
 
+    public void RemoveEnemy()
+    {
+        _enemySpawnCount--;
+        if (_enemySpawnCount <= 0)
+        {
+            StartCoroutine(Spawner());
+        }
+    }
+
     private IEnumerator Spawner()
-    {;
+    {
         _maxEnemySpawnCount += _enemySpawnIncrease;
         _enemySpawnCount = _maxEnemySpawnCount;
         for (int i = 0; i < _maxEnemySpawnCount; i++)
@@ -35,15 +42,18 @@ public class SpawnEnemy : MonoBehaviour
             {
                 spawnPoint.y = _spawnPoints[Random.Range(2, 4)].position.y;
             }
-            if(spawnPoint.x == 0)//up or bottom
+            if (spawnPoint.x == 0)//left or rigth
             {
-                spawnPoint.y = Random.Range(_spawnPoints[3].position.y, _spawnPoints[2].position.y);
+                spawnPoint.x = Random.Range(_spawnPoints[3].position.x, _spawnPoints[2].position.x);
             }
-            else//left or rigth
+            else//up or bottom
             {
-                spawnPoint.x = Random.Range(_spawnPoints[0].position.x, _spawnPoints[1].position.x);
+                spawnPoint.y = Random.Range(_spawnPoints[0].position.y, _spawnPoints[1].position.y);
             }
-            Instantiate(_enemies[Random.Range(0, _enemies.Length)], spawnPoint, Quaternion.identity);
+            GameObject newEnemy = Instantiate(_enemies[Random.Range(0, _enemies.Length)], spawnPoint, Quaternion.identity);
+            Enemy enemy = newEnemy.GetComponent<Enemy>();
+            enemy.Movement.SetPlayer(_player);
+            enemy.Health.SetSpawner(this);
             yield return new WaitForSeconds(_enemySpawnDelay);
         }
     }

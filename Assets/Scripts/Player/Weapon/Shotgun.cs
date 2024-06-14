@@ -12,7 +12,7 @@ public class Shotgun : Weapon
 
     protected virtual void Update()
     {
-        if (Input.GetMouseButton(0) && CanFire())
+        if (Input.GetMouseButtonDown(0) && CanFire())
         {
             foreach (var spawnPoint in _spawnPoints)
             {

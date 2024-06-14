@@ -22,4 +22,12 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "MainCamera")
+        {
+            Destroy(gameObject);
+        }
+    }
 }

@@ -6,8 +6,8 @@ public class PlayerRotation : MonoBehaviour
 
     private void Update()
     {
-        Vector3 difference = gameObject.transform.position - _camera.ScreenToWorldPoint(Input.mousePosition);
-        gameObject.transform.LookAt(difference, Vector3.forward);
-        gameObject.transform.rotation = Quaternion.Euler(0, 0, gameObject.transform.rotation.eulerAngles.z);
+        Vector3 direction = Input.mousePosition;
+        direction = _camera.ScreenToWorldPoint(direction) - gameObject.transform.position;
+        gameObject.transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
     }
 }
