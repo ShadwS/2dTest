@@ -7,6 +7,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected int _maxAmmoMagazine;
     [SerializeField] protected float _delayShoot;
     [SerializeField] protected float _timeReload;
+    [SerializeField] protected int _damage;
     private int _currentAmmoMagazine;
     private bool _canFire;
 
@@ -15,15 +16,16 @@ public class Weapon : MonoBehaviour
         _canFire = true;
         _currentAmmoMagazine = _maxAmmoMagazine;
     }
+    public bool CanFire() => _canFire;
 
     protected virtual void SpawnBullet(Transform spawnPoint) 
     {
-        GameObject bullet = Instantiate(_bullet, spawnPoint.position, spawnPoint.rotation);
-
+        GameObject newBullet = Instantiate(_bullet, spawnPoint.position, spawnPoint.rotation);
+        Bullet bullet = newBullet.GetComponent<Bullet>();
+        bullet.MoveForward();
+        bullet.SetDamage(_damage);
         DeegreaseBullet();
     }
-
-    protected bool CanFire() => _canFire;
 
     private void DeegreaseBullet()
     {

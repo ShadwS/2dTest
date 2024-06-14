@@ -23,7 +23,8 @@ public class ChangeWeapon : MonoBehaviour
 
     private IEnumerator UpScroll()
     {
-        yield return new WaitUntil(() => Input.GetAxis("Mouse ScrollWheel") > 0);
+        yield return new WaitUntil(() => Input.GetAxis("Mouse ScrollWheel") > 0 && 
+            _weapons[_weaponIndex].CanFire());
         _weapons[_weaponIndex].gameObject.SetActive(false);
         _weaponIndex++;
         if (_weaponIndex >= _weapons.Length)

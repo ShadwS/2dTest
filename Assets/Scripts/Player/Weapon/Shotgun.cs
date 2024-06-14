@@ -4,7 +4,11 @@ public class Shotgun : Weapon
 {
     [SerializeField] protected Transform[] _spawnPoints;
 
-    protected override void Awake() => base.Awake();
+    protected override void Awake()
+    {
+        _maxAmmoMagazine *= _spawnPoints.Length;
+        base.Awake();
+    }
 
     protected virtual void Update()
     {
