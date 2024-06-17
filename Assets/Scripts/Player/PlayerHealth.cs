@@ -14,7 +14,7 @@ public class PlayerHealth : MonoBehaviour
         _slider.value = _helth;
         if (_helth <= 0)
         {
-            Time.timeScale = 0;
+            EndGame.Instance.End();
         }
     }
 }
