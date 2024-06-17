@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class EndGame : MonoBehaviour
 {
     public static EndGame Instance;
+    public static event Action GameOver;
 
     [SerializeField] private GameObject _panel;
 
@@ -17,6 +19,7 @@ public class EndGame : MonoBehaviour
 
     public void End()
     {
+        GameOver?.Invoke();
         Time.timeScale = 0;
         _panel.SetActive(true);
     }
